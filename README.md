@@ -5,3 +5,9 @@
 - 本人技术栈目前主要围绕 vue
 - 提升对 vue 的理解，让自己能够更充分利用起来 vue
 - 面试准备，提升自己源码阅读能力
+
+# 响应式模块
+
+1. [如何转化为一个响应式对象](https://github.com/TongY928/analyse-vue2/blob/main/vue2/docs/observer/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%AF%B9%E8%B1%A1.md)
+2. [响应式对象如何收集依赖](https://github.com/TongY928/analyse-vue2/blob/main/vue2/docs/observer/%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86.md)
+3. [如何触发更新](https://github.com/TongY928/analyse-vue2/tree/main/vue2/docs/observer)
