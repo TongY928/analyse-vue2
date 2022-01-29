@@ -11,3 +11,5 @@
 1. [如何把数据对象转化为一个响应式对象](https://github.com/TongY928/analyse-vue2/blob/main/vue2/docs/observer/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%AF%B9%E8%B1%A1.md)
 2. [响应式对象如何收集依赖](https://github.com/TongY928/analyse-vue2/blob/main/vue2/docs/observer/%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86.md)
 3. [如何触发更新](https://github.com/TongY928/analyse-vue2/blob/main/vue2/docs/observer/%E6%B4%BE%E5%8F%91%E6%9B%B4%E6%96%B0.md)
+4. [计算属性](https://github.com/TongY928/analyse-vue2/blob/main/vue2/docs/observer/%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7.md)
+5. [侦听属性](https://github.com/TongY928/analyse-vue2/blob/main/vue2/docs/observer/%E4%BE%A6%E5%90%AC%E5%B1%9E%E6%80%A7.md)
