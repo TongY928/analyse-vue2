@@ -13,3 +13,4 @@
 3. [响应式数据如何触发更新](https://github.com/TongY928/analyse-vue2/blob/main/vue2/docs/observer/%E6%B4%BE%E5%8F%91%E6%9B%B4%E6%96%B0.md)
 4. [计算属性运转的整体流程](https://github.com/TongY928/analyse-vue2/blob/main/vue2/docs/observer/%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7.md)
 5. [侦听属性运转的整体流程](https://github.com/TongY928/analyse-vue2/blob/main/vue2/docs/observer/%E4%BE%A6%E5%90%AC%E5%B1%9E%E6%80%A7.md)
+6. [props 工作流程分析](https://github.com/TongY928/analyse-vue2/blob/main/vue2/docs/observer/props.md)
