@@ -18,8 +18,9 @@ import {
   invokeWithErrorHandling,
 } from "../util/index";
 
-// 一个全局变量
+// 全局变量，某个时刻创建子组件实例相关
 export let activeInstance: any = null;
+// 全局变量，某个时刻更新组件相关
 export let isUpdatingChildComponent: boolean = false;
 
 export function setActiveInstance(vm: Component) {
@@ -296,18 +297,21 @@ export function updateChildComponent(
   vm.$attrs = parentVnode.data.attrs || emptyObject;
   vm.$listeners = listeners || emptyObject;
 
-  // update props
+  // propsData 是父组件传递的 props 数据
   if (propsData && vm.$options.props) {
     toggleObserving(false);
+    // 子组件的 props
     const props = vm._props;
+    // props 的所有 key
     const propKeys = vm.$options._propKeys || [];
     for (let i = 0; i < propKeys.length; i++) {
       const key = propKeys[i];
-      const propOptions: any = vm.$options.props; // wtf flow?
+      const propOptions: any = vm.$options.props;
+      // 重新验证和计算 prop 的值，更新 vm._props
       props[key] = validateProp(key, propOptions, propsData, vm);
     }
     toggleObserving(true);
-    // keep a copy of raw propsData
+    //
     vm.$options.propsData = propsData;
   }
 

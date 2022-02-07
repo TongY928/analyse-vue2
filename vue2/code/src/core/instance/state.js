@@ -68,19 +68,20 @@ export function initState(vm: Component) {
 function initProps(vm: Component, propsOptions: Object) {
   const propsData = vm.$options.propsData || {};
   const props = (vm._props = {});
-  // cache prop keys so that future props updates can iterate using Array
-  // instead of dynamic object key enumeration.
   const keys = (vm.$options._propKeys = []);
   const isRoot = !vm.$parent;
-  // root instance props should be converted
+  // 不是根实例，shouldObserve 置为 false
   if (!isRoot) {
     toggleObserving(false);
   }
+  // 遍历 props 对象
   for (const key in propsOptions) {
     keys.push(key);
+    // 校验
     const value = validateProp(key, propsOptions, propsData, vm);
-    /* istanbul ignore else */
+    // 开发环境
     if (process.env.NODE_ENV !== "production") {
+      // attr 是否为 HTML 保留属性
       const hyphenatedKey = hyphenate(key);
       if (
         isReservedAttribute(hyphenatedKey) ||
@@ -91,6 +92,7 @@ function initProps(vm: Component, propsOptions: Object) {
           vm
         );
       }
+      // 传入自定义 setter
       defineReactive(props, key, value, () => {
         if (!isRoot && !isUpdatingChildComponent) {
           warn(
@@ -105,13 +107,12 @@ function initProps(vm: Component, propsOptions: Object) {
     } else {
       defineReactive(props, key, value);
     }
-    // static props are already proxied on the component's prototype
-    // during Vue.extend(). We only need to proxy props defined at
-    // instantiation here.
+    // 代理到 vm 上
     if (!(key in vm)) {
       proxy(vm, `_props`, key);
     }
   }
+  // 恢复为 true
   toggleObserving(true);
 }
 

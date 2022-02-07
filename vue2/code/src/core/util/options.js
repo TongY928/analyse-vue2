@@ -296,26 +296,35 @@ export function validateComponentName(name: string) {
  */
 function normalizeProps(options: Object, vm: ?Component) {
   const props = options.props;
+  // 没有传递 props，直接返回
   if (!props) return;
+  // 存放格式化后的 props
   const res = {};
   let i, val, name;
+  // props 定义为一个数组
   if (Array.isArray(props)) {
     i = props.length;
     while (i--) {
       val = props[i];
+      // 数组元素必须为 string
       if (typeof val === "string") {
+        // 把 name 转换为驼峰格式
         name = camelize(val);
+        // 把 props 的 type 置为空
         res[name] = { type: null };
       } else if (process.env.NODE_ENV !== "production") {
         warn("props must be strings when using array syntax.");
       }
     }
+    // props 定义为一个普通对象
   } else if (isPlainObject(props)) {
     for (const key in props) {
       val = props[key];
       name = camelize(key);
+      // 如果 val 是一个普通对象，直接赋值，如果是一个普通值，那么就是 type 类型
       res[name] = isPlainObject(val) ? val : { type: val };
     }
+    // 接收的 props 定义必须为一个数组或者对象
   } else if (process.env.NODE_ENV !== "production") {
     warn(
       `Invalid value for option "props": expected an Array or an Object, ` +
@@ -396,7 +405,7 @@ export function mergeOptions(
     child = child.options;
   }
 
-  // 检测参数是否合理，结构是否书写正确
+  // 检测参数是否合理，结构是否书写正确，然后挂载到 vm 上
   normalizeProps(child, vm);
   normalizeInject(child, vm);
   normalizeDirectives(child);

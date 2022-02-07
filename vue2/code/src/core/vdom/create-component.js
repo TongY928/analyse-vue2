@@ -38,7 +38,7 @@ const componentVNodeHooks = {
       const mountedNode: any = vnode; // work around flow
       componentVNodeHooks.prepatch(mountedNode, mountedNode);
     } else {
-      // 得到了子组件的 vm 实例
+      // 创建子组件的 vnode 实例
       const child = (vnode.componentInstance = createComponentInstanceForVnode(
         vnode,
         activeInstance
@@ -128,7 +128,6 @@ export function createComponent(
     return;
   }
 
-  // async component
   // 异步组件
   let asyncFactory;
   if (isUndef(Ctor.cid)) {
@@ -153,10 +152,9 @@ export function createComponent(
     transformModel(Ctor.options, data);
   }
 
-  // extract props
+  // 提取 props
   const propsData = extractPropsFromVNodeData(data, Ctor, tag);
 
-  // functional component
   // 函数式组件
   if (isTrue(Ctor.options.functional)) {
     return createFunctionalComponent(Ctor, propsData, data, context, children);
